@@ -1,12 +1,16 @@
 #include <Servo.h>
 #include <math.h>
-Servo s1;
-Servo s2;
+Servo s1a;
+Servo s1b;
+Servo s2a;
+Servo s2b;
 void setup() {
   Serial.begin(115200);
   // put your setup code here, to run once:
-  s1.attach(10);
-  s2.attach(9);
+  s1a.attach(11);
+  s1b.attach(10);
+  s2a.attach(9);
+  s2b.attach(6);
 }
 
 
@@ -20,14 +24,16 @@ void doSet(int val){
   if(ss2 > theMax) ss2 = theMax;
   if(ss2 < theMin) ss2 = theMin;
 
-  s1.write(ss1);
-  s2.write(ss2);
+  s1a.write(ss1);
+  s1b.write(ss2);
+  s2a.write(ss1);
+  s2b.write(ss2);
   return;
 }
 
 
 double f = 12.0/60.0;
-double dtheta = 30.0; //40.0;
+double dtheta = 50.0; //40.0;
 //unsigned long t = 0;
 int T = 10;
 void loop() {
